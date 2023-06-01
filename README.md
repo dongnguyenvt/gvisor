@@ -61,9 +61,11 @@ Make sure the following dependencies are installed:
 Build and install the `runsc` binary:
 
 ```sh
+apt-get install g++-aarch64-linux-gnu clang
+go install github.com/bazelbuild/bazelisk@latest
+ln -s $(go env GOPATH)/bin/bazelisk $(go env GOPATH)/bin/bazel
 mkdir -p bin
-make copy TARGETS=runsc DESTINATION=bin/
-sudo cp ./bin/runsc /usr/local/bin
+make copy DOCKER_BUILD=false TARGETS=runsc DESTINATION=bin/
 ```
 
 ### Testing
